@@ -14,30 +14,65 @@ namespace AdventOfCode2023
             int calibrationValue = 0;
             foreach (string calibrationDocumentLine in input)
             {
-                string spelledWithLettersZero = Regex.Replace(calibrationDocumentLine, "(zero)", "0");
-                string spelledWithLettersOne = Regex.Replace(spelledWithLettersZero, "(one)", "1");
-                string spelledWithLettersTwo = Regex.Replace(spelledWithLettersOne, "(two)", "2");
-                string spelledWithLettersThree = Regex.Replace(spelledWithLettersTwo, "(three)", "3");
-                string spelledWithLettersFour = Regex.Replace(spelledWithLettersThree, "(four)", "4");
-                string spelledWithLettersFive = Regex.Replace(spelledWithLettersFour, "(five)", "5");
-                string spelledWithLettersSix = Regex.Replace(spelledWithLettersFive, "(six)", "6");
-                string spelledWithLettersSeven = Regex.Replace(spelledWithLettersSix, "(seven)", "7");
-                string spelledWithLettersEight = Regex.Replace(spelledWithLettersSeven, "(eight)", "8");
-                string spelledWithLettersNine = Regex.Replace(spelledWithLettersEight, "(nine)", "9");
+                string[] calibrationValuesLine = new string[calibrationDocumentLine.Length];
 
-                string calibrationValues = Regex.Replace(spelledWithLettersNine, @"[\D-]", string.Empty);
+                MatchCollection matchesLetters = Regex.Matches(calibrationDocumentLine, @"(one|two|three|four|five|six|seven|eight|nine|zero)");
+                MatchCollection matchesDigits = Regex.Matches(calibrationDocumentLine, @"1|2|3|4|5|6|7|8|9|0");
 
-                if (calibrationValues.Length == 1)
-                    calibrationValues = calibrationValues.Insert(1, calibrationValues);
+                // Fill array with letters and digits
+                foreach (Match matchesLetter in matchesLetters)
+                    calibrationValuesLine[matchesLetter.Index] = matchesLetter.Value;
 
-                string firstDigit = calibrationValues.Substring(0, 1);
-                string lastDigit = calibrationValues.Substring(calibrationValues.Length - 1, 1);
+                foreach (Match matchesDigit in matchesDigits)
+                    calibrationValuesLine[matchesDigit.Index] = matchesDigit.Value;
+
+                // Create new array without null values
+                string[] calibrationValuesWithoutNull =
+                    calibrationValuesLine.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+
+                // Convert each number written as string in an integer
+                for (int i = 0; i < calibrationValuesWithoutNull.Length; i++)
+                    calibrationValuesWithoutNull[i] = ConvertToNumber(calibrationValuesWithoutNull[i]);
+
+                // Finally take the first and last number and combine them to a two digit number
+                string firstDigit = calibrationValuesWithoutNull[0];
+                string lastDigit = calibrationValuesWithoutNull[^1];
                 string twoDigitNumber = firstDigit + lastDigit;
 
                 calibrationValue += Convert.ToInt32(twoDigitNumber);
             }
 
             Console.WriteLine("Calibration value: " + calibrationValue);
+        }
+
+        private static string ConvertToNumber(string v)
+        {
+            switch (v)
+            {
+                case "zero":
+                    return "0";
+                case "one":
+                    return "1";
+                case "two":
+                    return "2";
+                case "three":
+                    return "3";
+                case "four":
+                    return "4";
+                case "five":
+                    return "5";
+                case "six":
+                    return "6";
+                case "seven":
+                    return "7";
+                case "eight":
+                    return "8";
+                case "nine":
+                    return "9";
+                default:
+                    // String must already be a number
+                    return v;
+            }
         }
     }
 }
