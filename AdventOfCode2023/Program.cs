@@ -6,7 +6,8 @@
         {
             Console.WriteLine("Choose function:\n");
             Console.WriteLine("(01) - Trebuchet?!");
-            Console.WriteLine("(02) - Cube Conundrum\n");
+            Console.WriteLine("(02) - Cube Conundrum");
+            Console.WriteLine("(03) - Gear Ratios\n");
             Console.WriteLine("(00) - Exit\n\n");
             Console.WriteLine("\n");
 
@@ -28,6 +29,10 @@
                 case 2:
                     Console.Clear();
                     CubeConundrum.Run();
+                    break;
+                case 3:
+                    Console.Clear();
+                    GearRatios.Run();
                     break;
                 default:
                     Console.Clear();

@@ -16,7 +16,7 @@ namespace AdventOfCode2023
             int blueCubesMax = 14;
             int sumIDPossibleGames = 0;
 
-            Console.WriteLine("Trebuchet?!-method is being run now...\n\n");
+            Console.WriteLine("CubeConundrum-method is being run now...\n\n");
             string pathInput = "/adventofcode.com_2023_day_2_input.txt";
 
             string[] input = File.ReadAllLines(Directory.GetCurrentDirectory() + pathInput);
