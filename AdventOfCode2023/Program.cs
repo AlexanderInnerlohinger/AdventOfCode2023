@@ -5,7 +5,8 @@
         static void Main(string[] args)
         {
             Console.WriteLine("Choose function:\n");
-            Console.WriteLine("(01) - Trebuchet?!\n");
+            Console.WriteLine("(01) - Trebuchet?!");
+            Console.WriteLine("(02) - Cube Conundrum\n");
             Console.WriteLine("(00) - Exit\n\n");
             Console.WriteLine("\n");
 
@@ -23,6 +24,10 @@
                 case 1:
                     Console.Clear();
                     Trebuchet.Run();
+                    break;
+                case 2:
+                    Console.Clear();
+                    CubeConundrum.Run();
                     break;
                 default:
                     Console.Clear();
