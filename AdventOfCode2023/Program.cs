@@ -1,4 +1,6 @@
-﻿namespace AdventOfCode2023
+﻿using AdventOfCode2023.Days;
+
+namespace AdventOfCode2023
 {
     internal class Program
     {
@@ -8,7 +10,8 @@
             Console.WriteLine("(01) - Trebuchet?!");
             Console.WriteLine("(02) - Cube Conundrum");
             Console.WriteLine("(03) - Gear Ratios");
-            Console.WriteLine("(04) - Scratchcards\n");
+            Console.WriteLine("(04) - Scratchcards");
+            Console.WriteLine("(05) - Fertilizer\n");
             Console.WriteLine("(00) - Exit\n\n");
             Console.WriteLine("\n");
 
@@ -38,6 +41,10 @@
                 case 4:
                     Console.Clear();
                     Scratchcards.Run();
+                    break;
+                case 5:
+                    Console.Clear();
+                    Fertilizer.Run();
                     break;
                 default:
                     Console.Clear();

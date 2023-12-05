@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace AdventOfCode2023
+namespace AdventOfCode2023.Days
 {
     internal class Scratchcards
     {
