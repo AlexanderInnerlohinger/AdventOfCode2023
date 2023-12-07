@@ -39,7 +39,7 @@ namespace AdventOfCode2023.Days
 
 
             string[] seeds = input[0].Split(':')[1].Split(' ');
-            int[] seedsWithoutNullOrEmpty = Array.ConvertAll(seeds.Where(x => !string.IsNullOrEmpty(x)).ToArray(), int.Parse);
+            uint[] seedsWithoutNullOrEmpty = Array.ConvertAll(seeds.Where(x => !string.IsNullOrEmpty(x)).ToArray(), uint.Parse);
 
 
             int seedToSoilIndex = Array.FindIndex(input, SeedToSoilPredicate);
@@ -71,14 +71,49 @@ namespace AdventOfCode2023.Days
             for (int i = humidityToLocation + 1; i < input.Length; i++)
                 humidityToLocationMaps.Add(input[i]);
 
+            // This method is way too resource inefficient because a map for the whole input is generated
+            //GenerateSeedToSoilMap();
+            //GenerateSoilToFertilizerMap();
+            //GenerateFertilizerToWaterMap();
+            //GenerateWaterToLightMap();
+            //GenerateLightToTemperatureMap();
+            //GenerateTemperatureToHumidityMap();
+            //GenerateHumidityToLocation();
 
-            GenerateSeedToSoilMap();
-            GenerateSoilToFertilizerMap();
-            GenerateFertilizerToWaterMap();
-            GenerateWaterToLightMap();
-            GenerateLightToTemperatureMap();
-            GenerateTemperatureToHumidityMap();
-            GenerateHumidityToLocation();
+
+            foreach (uint seed in seedsWithoutNullOrEmpty)
+            {
+                List<uint> availableSources = new List<uint>();
+                uint relevantSource = 0;
+
+                for (int i = 0; i < seedToSoilMaps.Count; i++)
+                {
+                    uint[] map = Array.ConvertAll(seedToSoilMaps[i].Split(' '), uint.Parse);
+                    availableSources.Add(map[1]);
+                }
+                availableSources = availableSources.Order().ToList();
+
+
+                foreach (uint availableSource in availableSources)
+                {
+                    if (seed > availableSource && relevantSource < availableSource)
+                        relevantSource = availableSource;
+                }
+
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
             foreach (int seed in seedsWithoutNullOrEmpty)
