@@ -12,7 +12,8 @@ namespace AdventOfCode2023
             Console.WriteLine("(03) - Gear Ratios");
             Console.WriteLine("(04) - Scratchcards");
             Console.WriteLine("(05) - Fertilizer");
-            Console.WriteLine("(06) - Toy Boats\n");
+            Console.WriteLine("(06) - Toy Boats");
+            Console.WriteLine("(07) - Camel Cards\n");
             Console.WriteLine("(00) - Exit\n\n");
             Console.WriteLine("\n");
 
@@ -50,6 +51,10 @@ namespace AdventOfCode2023
                 case 6:
                     Console.Clear();
                     ToyBoats.Run();
+                    break;
+                case 7:
+                    Console.Clear();
+                    CamelCards.Run();
                     break;
                 default:
                     Console.Clear();
