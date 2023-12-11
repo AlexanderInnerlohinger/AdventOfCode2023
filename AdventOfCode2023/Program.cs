@@ -13,7 +13,11 @@ namespace AdventOfCode2023
             Console.WriteLine("(04) - Scratchcards");
             Console.WriteLine("(05) - Fertilizer");
             Console.WriteLine("(06) - Toy Boats");
-            Console.WriteLine("(07) - Camel Cards\n");
+            Console.WriteLine("(07) - Camel Cards");
+            Console.WriteLine("(08) - Haunted Wasteland");
+            Console.WriteLine("(09) - Mirage Maintenance");
+            Console.WriteLine("(10) - PipeMaze");
+            Console.WriteLine("(11) - Cosmic Expansion\n");
             Console.WriteLine("(00) - Exit\n\n");
             Console.WriteLine("\n");
 
@@ -55,6 +59,22 @@ namespace AdventOfCode2023
                 case 7:
                     Console.Clear();
                     CamelCards.Run();
+                    break;
+                case 8:
+                    Console.Clear();
+                    HauntedWasteland.Run();
+                    break;
+                case 9:
+                    Console.Clear();
+                    MirageMaintenance.Run();
+                    break;
+                case 10:
+                    Console.Clear();
+                    PipeMaze.Run();
+                    break;
+                case 11:
+                    Console.Clear();
+                    CosmicExpansion.Run();
                     break;
                 default:
                     Console.Clear();
