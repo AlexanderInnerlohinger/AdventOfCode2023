@@ -68,7 +68,6 @@ namespace AdventOfCode2023.Days
             string[] splitLine = nodeLine.Split('=');
             Origin = splitLine[0].Trim();
 
-            //string[] coordinates = splitLine[1].Remove(1, splitLine[1].Length - 1).Split(',');
             string[] coordinates = splitLine[1].Substring(2, splitLine[1].Length - 3).Split(',');
             DestinationLeft = coordinates[0].Trim();
             DestinationRight = coordinates[1].Trim();
